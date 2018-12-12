@@ -446,7 +446,7 @@ class KurswahlenController extends Controller
             $auswahl = $request->session()->get('auswahl');
             if($fach->code == 'SP')
             {
-                $auswahl->addSportP5($stufe, $fach, 4, 4, 4);    
+                $auswahl->addSportP5($stufe->code, $fach, 4, 4, 4);    
             }
             else
             {

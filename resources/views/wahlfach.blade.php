@@ -11,10 +11,11 @@
     <h2>Gewählte Fächer bzw. Kurse</h2>
 
     <table class="table table-bordered table-striped table-dark table-sm">
-        <tr>
+       <tr>
             <th scope="col">Typ</th>
             <th scope="col">Fach</th>
-            <th scope="col">Wochenstunden</th>
+            <th scope="col">Lernfeld</th>
+            <th scope="col">Stunden</th>
             <th scope="col">Halbjahre</th>
             <th scope="col">Einbringung</th>
         </tr>
@@ -37,6 +38,11 @@
                 @endif
             </td>
             <td>{{ $fachwahl['fach']->name }}</td>
+            <td>
+                @if( isset($fachwahl['fach']->lf) )
+                    {{ chr(65 + $fachwahl['fach']->lf) }}
+                @endif
+            </td>
             <td>{{ $fachwahl['stunden'] }}</td>
             <td>
                 @if($fachwahl['halbjahre'] == 2)
@@ -56,7 +62,7 @@
                     {{ $fachwahl['halbjahre'] }}
                 @endif     
             </td>
-            <td>{{ $fachwahl['einbringung'] }}</td>
+            <td>{{ $fachwahl['einbringung'] }} Kurse</td>
         </tr>
     @endforeach
 

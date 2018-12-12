@@ -37,6 +37,8 @@
             <p>{{ Auth::user()->name }} eingeloggt</p>
         @endif
 
+        <hr />
+
         <div class="row">
             <div class="col-sm-3 col-md-6">
 

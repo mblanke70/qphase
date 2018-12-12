@@ -14,8 +14,9 @@
         <tr>
             <th scope="col">Typ</th>
             <th scope="col">Fach</th>
-            <th scope="col">Wochenstunden</th>
-            <th scope="col">Halbjahre</th>
+            <th scope="col">Lernfeld</th>
+            <th scope="col">Std.</th>
+            <th scope="col">Hj.</th>
             <th scope="col">Einbringung</th>
         </tr>
 
@@ -30,9 +31,14 @@
                 @endif
 
             </td>
+            <td>
+                @if( isset($fachwahl['fach']->lf) )
+                    {{ chr(65 + $fachwahl['fach']->lf) }}
+                @endif
+            </td>
             <td>{{ $fachwahl['stunden'] }}</td>
             <td>{{ $fachwahl['halbjahre'] }}</td>
-            <td>{{ $fachwahl['einbringung'] }}</td>
+            <td>{{ $fachwahl['einbringung'] }} Kurse</td>
         </tr>
     @endforeach
 
@@ -61,12 +67,14 @@
 
     @if(isset($warnung))
 
-        @foreach($warnung as $w)
-        <div class="alert alert-danger">
-          {{ $w }}
+        <div class="alert alert-danger pb-0">
+            <ul>
+            @foreach($warnung as $w)
+                <li>{{ $w }}</li>
+            @endforeach        
+            </ul>
         </div>
-        @endforeach        
-
+        
     @endif
 
     @if ($errors->any())
