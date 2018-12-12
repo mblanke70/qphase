@@ -19,7 +19,7 @@ class LoginController extends Controller
  
     public function redirectToProvider()
     {
-        return Socialite::driver('iserv')->stateless()->redirect();
+        return Socialite::driver('iserv')->redirect();
     }
 
 
@@ -31,7 +31,7 @@ class LoginController extends Controller
 
     public function handleProviderCallback()
     {
-        $iservUser = Socialite::driver('iserv')->user();
+        $iservUser = Socialite::driver('iserv')->stateless()->user();
 
         $user = User::where( 'email', $iservUser->email )->first();
         
