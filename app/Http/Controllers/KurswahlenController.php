@@ -354,20 +354,22 @@ class KurswahlenController extends Controller
             'RK','RE','MA','BI','CH','PH','IF'
         ]);
 
+        $warnung["sp"] = "Filter aktiv: Sport kann nicht gewählt werden.";
+
     	if( $lernfelder[0] == 0 )
     	{
             $optionen = Fach::findMany(['DE','EN','FR','LA','SN','MU']);
-	    	$warnung["lf"] = "Filter aktiv: Lernfeld A muss noch gewählt werden.";
+	    	$warnung["lf"] = "Filter aktiv: Fach aus Lernfeld A muss noch gewählt werden.";
     	}
     	elseif( $lernfelder[1] == 0 )
     	{
             $optionen = Fach::findMany(['PW','GE','EK','RK','RE']);
-	    	$warnung["lf"] = "Filter aktiv: Lernfeld B muss noch gewählt werden.";
+	    	$warnung["lf"] = "Filter aktiv: Fach aus Lernfeld B muss noch gewählt werden.";
     	}
     	elseif( $lernfelder[2] == 0 )
     	{
             $optionen = Fach::findMany(['MA','BI','CH','PH','IF']);
-			$warnung["lf"] = "Filter aktiv: Lernfeld C muss noch gewählt werden.";
+			$warnung["lf"] = "Filter aktiv: Fach aus Lernfeld C muss noch gewählt werden.";
     	}
         else
         {
@@ -376,7 +378,7 @@ class KurswahlenController extends Controller
             if( $kernfaecher->count() > 1 ) 
             {
                 $optionen->push(Fach::find('SP'));
-                $warnung["sp"] = "Sport P5 kann gewählt werden.";
+                unset($warnung["sp"]);
             }
         }
 
@@ -395,7 +397,7 @@ class KurswahlenController extends Controller
         {
             $optionen = $optionen->keyBy('code')->forget('EK');
 
-            $warnung["ek"] = "Filter aktiv: Erdkunde P5 kann nicht gewählt werden.";
+            $warnung["ek"] = "Filter aktiv: Erdkunde kann nicht gewählt werden.";
         }
 
         // wenn Schwerpunkt MK, dann kein Musik P5
@@ -403,7 +405,7 @@ class KurswahlenController extends Controller
         {
             $optionen = $optionen->keyBy('code')->forget('MU');
 
-            $warnung["mu"] = "Filter aktiv: Musik P5 kann nicht gewählt werden.";
+            $warnung["mu"] = "Filter aktiv: Musik kann nicht gewählt werden.";
         }
 
     	// wenn ein Kernfach fehlt, dann alles raus, was kein Kernfach ist
