@@ -354,8 +354,6 @@ class KurswahlenController extends Controller
             'RK','RE','MA','BI','CH','PH','IF'
         ]);
 
-        $warnung["sp"] = "Filter aktiv: Sport kann nicht gewählt werden.";
-
     	if( $lernfelder[0] == 0 )
     	{
             $optionen = Fach::findMany(['DE','EN','FR','LA','SN','MU']);
@@ -378,7 +376,6 @@ class KurswahlenController extends Controller
             if( $kernfaecher->count() > 1 ) 
             {
                 $optionen->push(Fach::find('SP'));
-                unset($warnung["sp"]);
             }
         }
 
