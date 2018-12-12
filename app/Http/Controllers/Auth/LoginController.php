@@ -19,7 +19,7 @@ class LoginController extends Controller
  
     public function redirectToProvider()
     {
-        return Socialite::driver('iserv')->redirect();
+        return Socialite::driver('iserv')->stateless()->redirect();
     }
 
 
