@@ -421,6 +421,8 @@ class KurswahlenController extends Controller
             }
 
             $warnung["kf"] = "Filter aktiv: Es muss noch 1 Kernfach gewählt werden.";
+            unset($warnung["mu"]);
+            unset($warnung["ek"]);
         }
 	   
     	return view('wahl', compact('optionen', 'schwerpunkt', 'lernfelder', 'warnung', 'kernfaecher', 'matrix', 'stufe'));  
