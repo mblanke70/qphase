@@ -50,6 +50,7 @@ class LoginController extends Controller
             $newUser->email    = $iservUser["email"];
             $newUser->username = $iservUser["preferred_username"];
 
+            /*
             foreach($iservUser["groups"] as $key => $val) {
                 if( substr($val["name"], 0, 6) == "Klasse" ) {
                     $newUser->klasse   = substr($val["name"], 7);
@@ -57,6 +58,7 @@ class LoginController extends Controller
                     break;
                 }
             }
+            */
 
             $newUser->save();
             $user = $newUser;

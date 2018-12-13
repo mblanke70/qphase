@@ -148,9 +148,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            $auswahl->matrix->pop();
-            return redirect('p1');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }   
 
         $request->validate(['p2' => 'required']);
 
@@ -217,9 +217,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            $auswahl->matrix->pop();
-            return redirect('p2');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }  
 
         $request->validate(['p3' => 'required']);
 
@@ -315,9 +315,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            $auswahl->matrix->pop();
-            return redirect('p3');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }  
 
         $request->validate(['p4' => 'required']);
 
@@ -433,9 +433,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            $auswahl->matrix->pop();
-            return redirect('p4');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }  
 
         $request->validate(['p5' => 'required']);
 
@@ -522,10 +522,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            //$auswahl = $auswahl->matrix->whereIn('code', ['p1', 'p2', 'p3','p4']);
-            $auswahl->matrix->pop();
-            return redirect('p5');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }  
 
         $request->validate(['k2' => 'required']);
 
@@ -602,9 +601,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            $auswahl->matrix->pop();
-            return redirect('k1');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }  
 
         $request->validate(['e1' => 'required']);
 
@@ -653,9 +652,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            $auswahl->matrix->pop();
-            return redirect('e1');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }  
 
         $request->validate(['e2' => 'required']);
 
@@ -702,9 +701,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            $auswahl->matrix->pop();
-            return redirect('e2');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }  
 
         $request->validate(['e3' => 'required']);
 
@@ -766,9 +765,9 @@ class KurswahlenController extends Controller
         if($request->btn == "Zurück")
         {
             $auswahl = $request->session()->get('auswahl');
-            $auswahl->matrix->pop();
-            return redirect('e3');
-        }
+            $fach    = $auswahl->matrix->pop();
+            return redirect($fach->get('typ'));
+        }  
 
         $request->validate(['e4' => 'required']);
 
