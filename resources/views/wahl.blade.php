@@ -10,50 +10,54 @@
 
     <h2>Gewählte Fächer bzw. Kurse</h2>
 
-    <table class="table table-bordered table-striped table-dark table-sm">
-        <tr>
-            <th scope="col">Typ</th>
-            <th scope="col">Fach</th>
-            <th scope="col">Lernfeld</th>
-            <th scope="col">Std.</th>
-            <th scope="col">Hj.</th>
-            <th scope="col">Einbringung</th>
-        </tr>
+    <div class="table-responsive">
 
-    @foreach($matrix as $fachwahl)
-        <tr>
-            <td scope="col">{{ $fachwahl['typ'] }}</td>
-            <td>
-                {{ $fachwahl['fach']->name }}
+        <table class="table table-bordered table-striped table-dark table-sm">
+            <tr>
+                <th scope="col">Typ</th>
+                <th scope="col">Fach</th>
+                <th scope="col">Lernfeld</th>
+                <th scope="col">Std.</th>
+                <th scope="col">Hj.</th>
+                <th scope="col">Einbringung</th>
+            </tr>
 
-                @if($fachwahl['fach']->kf != null)
-                    (KF)
-                @endif
+        @foreach($matrix as $fachwahl)
+            <tr>
+                <td scope="col">{{ $fachwahl['typ'] }}</td>
+                <td>
+                    {{ $fachwahl['fach']->name }}
 
-            </td>
-            <td>
-                @if( isset($fachwahl['fach']->lf) )
-                    {{ chr(65 + $fachwahl['fach']->lf) }}
-                @endif
-            </td>
-            <td>{{ $fachwahl['stunden'] }}</td>
-            <td>{{ $fachwahl['halbjahre'] }}</td>
-            <td>{{ $fachwahl['einbringung'] }} Kurse</td>
-        </tr>
-    @endforeach
+                    @if($fachwahl['fach']->kf != null)
+                        (KF)
+                    @endif
 
-        <tr>
-            <td scope="col"></td>
-            <td></td>
-            <td style="text-align: right;">Summe:</td>
-            <td colspan="2">
-                @if(isset($summe1)) {{ $summe1 }} Kurse @endif
-                @if(isset($summe2)) ({{ $summe2 }} Stunden) @endif
-            </td>
-        </tr>
+                </td>
+                <td>
+                    @if( isset($fachwahl['fach']->lf) )
+                        {{ chr(65 + $fachwahl['fach']->lf) }}
+                    @endif
+                </td>
+                <td>{{ $fachwahl['stunden'] }}</td>
+                <td>{{ $fachwahl['halbjahre'] }}</td>
+                <td>{{ $fachwahl['einbringung'] }} Kurse</td>
+            </tr>
+        @endforeach
 
-    </table>
+            <tr>
+                <td scope="col"></td>
+                <td></td>
+                <td style="text-align: right;">Summe:</td>
+                <td colspan="2">
+                    @if(isset($summe1)) {{ $summe1 }} Kurse @endif
+                    @if(isset($summe2)) ({{ $summe2 }} Stunden) @endif
+                </td>
+            </tr>
 
+        </table>
+
+    </div>
+    
     <p>
     Lernfelder : {{ "A: ".$lernfelder[0]." B: ".$lernfelder[1]." C: ".$lernfelder[2] }}
     </p>
