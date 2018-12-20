@@ -3,14 +3,12 @@
 @section('title', 'Kurswahlen')
 
 @section('heading')
-    <h2>{{ $schwerpunkt->name }}</h2>
+    <h3 class="mt-4">{{ $schwerpunkt->name }}</h3>
 @endsection
 
 @section('choices')
 
-    <h2>Gewählte Fächer bzw. Kurse</h2>
-
-    <div class="table-responsive">
+    <div class="table-responsive mt-4">
 
         <table class="table table-bordered table-striped table-dark table-sm">
             <tr>
@@ -67,7 +65,7 @@
 
 @section('content')
 
-    <h3>{{ $stufe->name }}</h3>
+    <h4 class="mt-3">{{ $stufe->name }}</h4>
 
     @if(isset($warnung))
 
@@ -87,7 +85,7 @@
     </div>
     @endif
     
-    <form action="{{ url($stufe->code) }}" method="POST" role="form">
+    <form class="mt-3" action="{{ url($stufe->code) }}" method="POST" role="form">
 
         {{ csrf_field() }}
 
@@ -124,7 +122,5 @@
 @endsection
 
 @section('footer')
-    <p>
-        <a href="{{url('/')}}" class="btn btn-danger" role="button">Neustart</a>
-    </p>
+    <a href="{{url('/')}}" class="btn btn-danger" role="button">Neustart</a>
 @endsection

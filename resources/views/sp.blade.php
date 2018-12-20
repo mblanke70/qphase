@@ -3,10 +3,12 @@
 @section('title', 'Kurswahlen')
 
 @section('heading')
-    <h1>{{ $stufe->name }}</h1>
+    <h3 class="mt-4">Kurswahlen Q-Phase</h3>
 @endsection
 
 @section('content')
+
+    <h4 class="mt-4">Schwerpunktwahl</h4>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -14,7 +16,7 @@
     </div>
     @endif
     
-    <form action="{{ url('schwerpunkt') }}" method="POST" role="form">
+    <form class="mt-4" action="{{ url('schwerpunkt') }}" method="POST" role="form">
 
         {{ csrf_field() }}
 
