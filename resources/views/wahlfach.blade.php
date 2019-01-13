@@ -7,8 +7,6 @@
 @endsection
 
 @section('choices')
-
-
     <div class="table-responsive mt-4">
 
         <table class="table table-bordered table-striped table-dark table-sm">
@@ -85,7 +83,21 @@
 
 @section('content')
 
+    @if($summe1>36 )
+        <div class="alert alert-danger">
+            Die Anzahl der einzubringenden Kurse ({{$summe1}}) ist größer als 36.<br />Die Wahl ist nicht gültig.
+        </div>
+    @else
+        <div class="alert alert-success">
+            Die Anzahl der einzubringenden Kurse ({{$summe1}}) ist nicht größer als 36<br />Die Wahl ist gültig.
+        </div>
+    @endif
+
     <h4 class="mt-3">{{ $stufe->name }}</h4>
+
+    <div class="alert alert-warning">
+        Es sind insgesamt {{$matrix->count()-5}} 3-stündigen Kurse belegt worden.
+    </div>
 
     <form action="{{ url($stufe->code) }}" method="POST" role="form">
 

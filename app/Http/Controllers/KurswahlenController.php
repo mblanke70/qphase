@@ -390,7 +390,7 @@ class KurswahlenController extends Controller
         }
 
         // wenn Schwerpunkt GW, dann kein Erdkunde P5
-        if($schwerpunkt->code == 'gw') 
+        if($schwerpunkt->code == 'gw' && !$matrix->pluck('fach')->contains('code', 'EK')) 
         {
             $optionen = $optionen->keyBy('code')->forget('EK');
 
@@ -398,7 +398,7 @@ class KurswahlenController extends Controller
         }
 
         // wenn Schwerpunkt MK, dann kein Musik P5
-        if($schwerpunkt->code == 'mk') 
+        if($schwerpunkt->code == 'mk' && !$matrix->pluck('fach')->contains('code', 'MU')) 
         {
             $optionen = $optionen->keyBy('code')->forget('MU');
 
@@ -579,7 +579,14 @@ class KurswahlenController extends Controller
             $lernfelder[$i] = $matrix->pluck('fach')->where('lf', $i)->count();
         }
 
-	   	if( $matrix->pluck('fach')->where('nw')->count() == 0 )
+        // wenn noch keine NW gewählt...
+	   	if( $matrix->pluck('fach')->where('nw')->count() == 0
+            // im NW-Schwerpunkt muss eine zusätzliche NW oder IF gewählt werden
+            || ( $schwerpunkt->code == "nw" 
+                && $matrix->pluck('fach')->where('nw')->count() == 1 
+                && !$matrix->pluck('fach')->contains('code', 'IF')
+            )
+        )
 	   	{
             $optionen = Fach::findMany(['BI','CH','PH','IF']);
 
@@ -587,6 +594,9 @@ class KurswahlenController extends Controller
 			{
                 $optionen = $optionen->keyBy('code')->forget('IF');
 			}
+
+            // alle bereits gewählte Fächer herausfiltern
+            $optionen = $optionen->diff($matrix->pluck('fach'));
 
     		return view('wahl', compact('optionen', 'schwerpunkt', 'lernfelder', 'matrix', 'stufe')); 
 	   	}
@@ -685,14 +695,24 @@ class KurswahlenController extends Controller
             $lernfelder[$i] = $matrix->pluck('fach')->where('lf', $i)->count();
         }
 
-        if( $matrix->pluck('fach')->contains('code', 'KU')
-            || $matrix->pluck('fach')->contains('code', 'MU') )
+        if( ($schwerpunkt->code != 'mk' &&
+            ( $matrix->pluck('fach')->contains('code', 'KU')
+                || $matrix->pluck('fach')->contains('code', 'MU') 
+            )) ||
+            ($schwerpunkt->code == 'mk' &&
+            ( $matrix->pluck('fach')->contains('code', 'KU')
+                && $matrix->pluck('fach')->contains('code', 'MU') 
+            )) 
+        )
         {
             return redirect('e4');
         }
         
         $optionen = Fach::findMany(['MU','KU']);
-
+        
+        // alle bereits gewählte Fächer herausfiltern
+        $optionen = $optionen->diff($matrix->pluck('fach'));
+        
         return view('wahl', compact('optionen', 'schwerpunkt', 'lernfelder', 'matrix', 'stufe'));
     }
 
