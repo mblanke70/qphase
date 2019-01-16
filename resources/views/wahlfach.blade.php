@@ -44,6 +44,8 @@
                 </td>
                 <td>{{ $fachwahl['stunden'] }}</td>
                 <td>
+                    {{ $fachwahl['halbjahre'] }}
+                    <!--
                     @if($fachwahl['halbjahre'] == 2)
                     <form action="{{ url($stufe->code.'/'.$fachwahl['fach']->code) }}" method="POST">
                         {{ csrf_field() }}
@@ -59,7 +61,8 @@
                     </form>
                     @else
                         {{ $fachwahl['halbjahre'] }}
-                    @endif     
+                    @endif  
+                    -->   
                 </td>
                 <td>{{ $fachwahl['einbringung'] }} Kurse</td>
             </tr>
@@ -93,6 +96,8 @@
         </div>
     @endif
 
+    <!--
+
     <h4 class="mt-3">{{ $stufe->name }}</h4>
 
     <div class="alert alert-warning">
@@ -123,6 +128,8 @@
         </div>
 
     </form>
+
+    -->
 
 @endsection
 
