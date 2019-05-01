@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () { return redirect('sportwahlen'); });
-
-Route::get ('sportwahlen', 'SportwahlenController@index');
+Route::get ('/', 'SportwahlenController@index');
 Route::get ('sportwahlen/wahlbogen', 'SportwahlenController@zeigeWahlbogen');
 Route::post('sportwahlen/wahlbogen', 'SportwahlenController@speichereWahlbogen');
 
