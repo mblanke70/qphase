@@ -35,8 +35,6 @@ class LoginController extends Controller
 
         $user = User::where( 'email', $iservUser->email )->first();
         
-        dd($user);
-
         /*
          *  Checks to see if a user exists. If not we need to create the
          *  user in the database before logging them in.
@@ -65,6 +63,6 @@ class LoginController extends Controller
 
         Auth::login( $user );
 
-        return redirect('sportwahlen/index');
+        return redirect('/');
     }
 }
