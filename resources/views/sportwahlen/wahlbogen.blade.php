@@ -14,7 +14,7 @@
     </div>
     @endif
 
-    <form class="mt-3" action="{{ url('sportwahlen') }}" method="POST" role="form">
+    <form class="mt-3" action="{{ url('sportwahlen/wahlbogen') }}" method="POST" role="form">
 
     {{ csrf_field() }}
 

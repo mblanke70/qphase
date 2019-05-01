@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sportwahl extends Model
 {
-        protected $table = 'sportwahlen';
+    protected $table = 'sportwahlen';
 
 }

@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('sportwahlen', 'SportwahlenController@zeigeSportkurse');
-Route::post('sportwahlen', 'SportwahlenController@speichereSportwahlen');
+Route::get('/', function () { return redirect('sportwahlen'); });
+
+Route::get ('sportwahlen', 'SportwahlenController@index');
+Route::get ('sportwahlen/wahlbogen', 'SportwahlenController@zeigeWahlbogen');
+Route::post('sportwahlen/wahlbogen', 'SportwahlenController@speichereWahlbogen');
 
 Route::get('login/iserv', 'Auth\LoginController@redirectToProvider')->name('login');
 Route::get('login/iserv/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/', 'KurswahlenController@zeigeSchwerpunkte');
 
 Route::get ('schwerpunkt', 'KurswahlenController@zeigeSchwerpunkte');
 Route::post('schwerpunkt', 'KurswahlenController@verarbeiteSchwerpunkte');

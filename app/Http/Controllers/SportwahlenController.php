@@ -8,6 +8,7 @@ use Auth;
 
 use App\Sportkurs;
 use App\Sportwahl;
+use App\Sportkursthema;
 
 class SportwahlenController extends Controller
 {
@@ -16,7 +17,23 @@ class SportwahlenController extends Controller
         $this->middleware('auth');
     }
 
-    public function zeigeSportkurse()
+    public function index()
+    {
+    	$user = Auth::user();
+
+		$sportwahl = Sportwahl::where( 'email', $user->email )->first();
+
+	    if( $sportwahl == null )
+	    {
+	    	return redirect('sportwahlen/wahlbogen');
+	    }
+	    else
+	    {
+	    	return view('sportwahlen/index', compact('sportwahl', 'user'));
+	    }
+    }
+
+    public function zeigeWahlbogen()
     {
        	$user = Auth::user();
 
@@ -67,10 +84,10 @@ class SportwahlenController extends Controller
 			"b9" => "Basketball",
 		];
 
-    	return view('sportkurse', compact('semester', 'ersatz', 'user'));
+    	return view('sportwahlen/wahlbogen', compact('semester', 'ersatz', 'user'));
     }
 
-    public function speichereSportwahlen(Request $request)
+    public function speichereWahlbogen(Request $request)
     {
        	$user = Auth::user();
 
@@ -119,11 +136,13 @@ class SportwahlenController extends Controller
         $sportwahl->sem3 = $wahlen[2]->titel;
         $sportwahl->sem4 = $wahlen[3]->titel;
 
-        $sportwahl->subA = $request->ersatzwahl[0];
-        $sportwahl->subB = $request->ersatzwahl[1];
+        $a = Sportkursthema::where('code', $request->ersatzwahl[0])->first();
+        $sportwahl->subA = $a->titel;
+        $b = Sportkursthema::where('code', $request->ersatzwahl[1])->first();
+        $sportwahl->subB = $b->titel;
 
         $sportwahl->save();
 
-		return redirect('sportwahlen');
+		return redirect('/');
     }
 }
