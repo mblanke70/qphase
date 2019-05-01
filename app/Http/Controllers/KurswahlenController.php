@@ -351,7 +351,7 @@ class KurswahlenController extends Controller
 
         $optionen = Fach::findMany([
             'DE','EN','FR','LA','SN','MU','PW','GE','EK',
-            'RK','RE','MA','BI','CH','PH','IF'
+            'RK','RE','MA','BI','CH','PH','IF','PL'
         ]);
 
     	if( $lernfelder[0] == 0 )
@@ -361,7 +361,7 @@ class KurswahlenController extends Controller
     	}
     	elseif( $lernfelder[1] == 0 )
     	{
-            $optionen = Fach::findMany(['PW','GE','EK','RK','RE']);
+            $optionen = Fach::findMany(['PW','GE','EK','RK','RE','PL']);
 	    	$warnung["lf"] = "Filter aktiv: Fach aus Lernfeld B muss noch gewählt werden.";
     	}
     	elseif( $lernfelder[2] == 0 )

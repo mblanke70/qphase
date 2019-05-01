@@ -1,11 +1,11 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+  	position: relative;
+  	min-height: 100%;
 }
 body {
-  margin-bottom: 60px; /* Margin bottom by footer height */
+  	margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
 .footer {
@@ -22,10 +22,11 @@ body {
 /* Not required for template or sticky footer method. */
 
 .container {
-  width: auto;
-  max-width: 680px;
-  padding: 0 15px;
+  	width: auto;
+  	max-width: 680px;
+  	padding: 0 15px;
 }
+
 
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)

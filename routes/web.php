@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('sportwahlen', 'SportwahlenController@zeigeSportkurse');
+Route::post('sportwahlen', 'SportwahlenController@speichereSportwahlen');
+
 Route::get('login/iserv', 'Auth\LoginController@redirectToProvider')->name('login');
 Route::get('login/iserv/callback', 'Auth\LoginController@handleProviderCallback');
 
