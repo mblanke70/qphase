@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use App\User;
-use Socialite;
+
 use Auth;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -61,7 +62,7 @@ class LoginController extends Controller
 
         $user->save();
 
-        Auth::login( $user );
+        auth()->login($user, true);
 
         return redirect('/');
     }
