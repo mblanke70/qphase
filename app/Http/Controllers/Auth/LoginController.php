@@ -64,10 +64,10 @@ class LoginController extends Controller
         //Auth::login($user);
 
         auth()->login($user, true);
-        //dd(Auth::user());
+        //dd(Auth::user()); Funktioniert!!!
+ 
+        return redirect()->intended('/test');
 
-        //return redirect()->intended('/test');
-
-        return view('test', compact('user'));
+        //return view('test', compact('user'));
     }
 }
