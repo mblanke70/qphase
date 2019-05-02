@@ -12,11 +12,10 @@
 */
 
 Route::get('test', function () {
-	dd(Session::all());
+	//dd(Session::all());
 	$user = Auth::user();
     return view('test', compact('user'));
 });
-
 
 Route::get ('/', 'SportwahlenController@index');
 Route::get ('sportwahlen/wahlbogen', 'SportwahlenController@zeigeWahlbogen');
