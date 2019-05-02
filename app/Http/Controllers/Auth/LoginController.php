@@ -64,7 +64,7 @@ class LoginController extends Controller
         //Auth::login($user);
 
         auth()->login($user, true);
-        dd(Auth::user());
+        //dd(Auth::user());
 
         //return redirect()->intended('/test');
 
