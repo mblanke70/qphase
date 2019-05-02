@@ -23,7 +23,6 @@ class LoginController extends Controller
         return Socialite::driver('iserv')->redirect();
     }
 
-
     /**
      * Obtain the user information from GitHub.
      *
@@ -32,7 +31,7 @@ class LoginController extends Controller
 
     public function handleProviderCallback()
     {
-        $iservUser = Socialite::driver('iserv')->user();
+        $iservUser = Socialite::driver('iserv')->stateless()->user();
 
         $user = User::where( 'email', $iservUser->email )->first();
         
@@ -64,6 +63,6 @@ class LoginController extends Controller
 
         auth()->login($user, true);
 
-        return redirect('/');
+        return redirect('/')->intended();
     }
 }
