@@ -24,7 +24,7 @@ Route::group([
     ], function () 
 {
 	Route::get ('/', 'SportwahlenController@index');
-}
+});
 
 /*
 Route::get ('/', 'SportwahlenController@index');
