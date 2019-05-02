@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\sport;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 use Validator;
 use Auth;
 
