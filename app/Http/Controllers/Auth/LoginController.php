@@ -9,6 +9,7 @@ use App\User;
 
 use Auth;
 use Socialite;
+use Session;
 
 class LoginController extends Controller
 {
@@ -65,6 +66,8 @@ class LoginController extends Controller
 
         auth()->login($user, true);
         //dd(Auth::user()); Funktioniert!!!
+
+        dd(Session::all();
  
         return redirect()->intended('/test');
 
