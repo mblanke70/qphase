@@ -12,6 +12,7 @@
 */
 
 Route::get('test', function () {
+	dd(Session::all());
 	$user = Auth::user();
     return view('test', compact('user'));
 });
