@@ -63,6 +63,6 @@ class LoginController extends Controller
 
         auth()->login($user, true);
 
-        return redirect('/')->intended();
+        return redirect()->intended('/');
     }
 }
