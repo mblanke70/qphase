@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('test', function () {
+	$user = Auth::user();
+    return view('test', compact('user'));
+});
+
+
 Route::get ('/', 'SportwahlenController@index');
 Route::get ('sportwahlen/wahlbogen', 'SportwahlenController@zeigeWahlbogen');
 Route::post('sportwahlen/wahlbogen', 'SportwahlenController@speichereWahlbogen');

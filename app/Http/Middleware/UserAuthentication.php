@@ -23,12 +23,12 @@ class UserAuthentication
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    {        
         if ($this->auth->check())
         {
             return $next($request);
         }
 
-        return new RedirectResponse(url('login/iserv'));
+        return new RedirectResponse( url('login/iserv') );
     }
 }
