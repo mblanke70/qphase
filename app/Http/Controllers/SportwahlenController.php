@@ -12,10 +12,12 @@ use App\Sportkursthema;
 
 class SportwahlenController extends Controller
 {
+    /*
 	public function __construct()
     {
         $this->middleware('user');
     }
+    */
 
     public function index()
     {
