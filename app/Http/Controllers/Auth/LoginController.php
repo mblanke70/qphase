@@ -61,9 +61,10 @@ class LoginController extends Controller
 
         $user->save();
 
-        Auth::login($user);
+        //Auth::login($user);
 
-        //auth()->login($user, true);
+        auth()->login($user, true);
+        dd(Auth::user());
 
         return redirect()->intended('/test');
     }
