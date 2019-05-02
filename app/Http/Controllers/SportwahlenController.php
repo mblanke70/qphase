@@ -14,7 +14,7 @@ class SportwahlenController extends Controller
 {
 	public function __construct()
     {
-        $this->middleware('user');
+        $this->middleware('auth.basic');
     }
 
     public function index()

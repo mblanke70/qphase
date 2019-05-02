@@ -64,8 +64,6 @@ class LoginController extends Controller
 
         auth()->login($user, true);
 
-        dd(Auth::user());
-
         return redirect('/');
     }
 }
