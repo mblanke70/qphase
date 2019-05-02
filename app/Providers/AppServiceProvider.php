@@ -11,8 +11,8 @@ use InvalidArgumentException;
 
 use Laravel\Socialite\SocialiteManager;
 use Laravel\Socialite\SocialiteServiceProvider;
-use App\Sportkurs;
 
+use App\Sportkurs;
 
 class AppServiceProvider extends ServiceProvider
 {
