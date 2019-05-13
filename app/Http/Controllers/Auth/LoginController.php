@@ -71,6 +71,7 @@ class LoginController extends Controller
  
         //return redirect()->intended('/sport');
 
-        return view('test', compact('user'));
+        return redirect()->intended('/test');
+        //return view('test', compact('user'));
     }
 }
