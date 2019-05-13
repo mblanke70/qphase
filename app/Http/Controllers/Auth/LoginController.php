@@ -62,9 +62,9 @@ class LoginController extends Controller
 
         $user->save();
 
-        //Auth::login($user);
+        Auth::login($user);
 
-        auth()->login($user, true);
+        //auth()->login($user, true);
         //dd(Auth::user()); Funktioniert!!!
 
         dd(Session::all());
