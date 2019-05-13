@@ -35,6 +35,8 @@ class LoginController extends Controller
         $iservUser = Socialite::driver('iserv')->stateless()->user();
 
         $user = User::where( 'email', $iservUser->email )->first();
+
+        dd( $user );
         
         /*
          *  Checks to see if a user exists. If not we need to create the
@@ -62,7 +64,7 @@ class LoginController extends Controller
 
         $user->save();
 
-        Auth::login($user);
+        Auth::login( $user );
 
         //auth()->login($user, true);
         //dd(Auth::user()); Funktioniert!!!
