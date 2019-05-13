@@ -23,11 +23,11 @@ class UserAuthentication
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {        
-        dd("check");
-        
+    {                
         if ($this->auth->check())
         {
+            dd("auth check positive");
+
             return $next($request);
         }
 
