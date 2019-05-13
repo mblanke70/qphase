@@ -69,8 +69,8 @@ class LoginController extends Controller
 
         //dd(Session::all());
  
-        return redirect()->intended('/sport');
+        //return redirect()->intended('/sport');
 
-        //return view('test', compact('user'));
+        return view('test', compact('user'));
     }
 }
