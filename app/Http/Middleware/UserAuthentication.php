@@ -24,6 +24,8 @@ class UserAuthentication
      */
     public function handle($request, Closure $next)
     {        
+        dd("check");
+        
         if ($this->auth->check())
         {
             return $next($request);

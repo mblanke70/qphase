@@ -20,7 +20,7 @@ Route::get('test', function () {
 Route::group([
         'prefix'     => 'sport', 
         'namespace'  => 'sport',
-        'middleware' => ['web', 'user']
+        'middleware' => ['user']
     ], function () 
 {
 	Route::get ('/', 'SportwahlenController@index');
