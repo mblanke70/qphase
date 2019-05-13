@@ -26,8 +26,6 @@ class UserAuthentication
     {                
         if ($this->auth->check())
         {
-            dd("auth check positive");
-
             return $next($request);
         }
 
