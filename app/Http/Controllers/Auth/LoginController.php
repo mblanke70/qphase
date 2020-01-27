@@ -64,10 +64,9 @@ class LoginController extends Controller
 
         Auth::login( $user );
 
-        //auth()->login($user, true);
         //dd(Auth::user()); Funktioniert!!!
 
-        dd(Session::all());
+        //dd(Session::all());
  
         //return redirect()->intended('/sport');
 

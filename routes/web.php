@@ -11,12 +11,15 @@
 |
 */
 
+/*
 Route::get('test', function () {
 	//dd(Session::all());
 	$user = Auth::user();
     return view('test', compact('user'));
 });
+*/
 
+/*
 Route::group([
         'prefix'     => 'sport', 
         'namespace'  => 'sport',
@@ -25,6 +28,7 @@ Route::group([
 {
 	Route::get ('/', 'SportwahlenController@index');
 });
+*/
 
 /*
 Route::get ('/', 'SportwahlenController@index');
@@ -32,9 +36,10 @@ Route::get ('sportwahlen/wahlbogen', 'SportwahlenController@zeigeWahlbogen');
 Route::post('sportwahlen/wahlbogen', 'SportwahlenController@speichereWahlbogen');
 */
 
+Route::get ('/', 'KurswahlenController@zeigeSchwerpunkte');
+
 Route::get('login/iserv', 'Auth\LoginController@redirectToProvider')->name('login');
 Route::get('login/iserv/callback', 'Auth\LoginController@handleProviderCallback');
-
 
 Route::get ('schwerpunkt', 'KurswahlenController@zeigeSchwerpunkte');
 Route::post('schwerpunkt', 'KurswahlenController@verarbeiteSchwerpunkte');
