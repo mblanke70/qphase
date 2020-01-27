@@ -199,6 +199,7 @@ class KurswahlenController extends Controller
     	// bereits gewählte Fächer herausfiltern
         $optionen = $optionen->diff($matrix->pluck('fach'));
 
+        $warnung = array();
     	// noch kein B-Fach und kein Kernfach gewählt?
     	if($lernfelder[1] == 0 && $kernfaecher->count() == 0) 
     	{
@@ -265,6 +266,8 @@ class KurswahlenController extends Controller
             $optionen = $optionen->keyBy('code')->forget('RE');
     	}
 		
+        $warnung = array();
+
 		// wenn kein Kernfach gewählt, müssen allle Nicht-Kernfächer raus
         if( $kernfaecher->count() == 0  )
 		{
@@ -353,6 +356,8 @@ class KurswahlenController extends Controller
             'DE','EN','FR','LA','SN','MU','PW','GE','EK',
             'RK','RE','MA','BI','CH','PH','IF','PL'
         ]);
+
+        $warnung = array();
 
     	if( $lernfelder[0] == 0 )
     	{
@@ -892,7 +897,7 @@ class KurswahlenController extends Controller
             });
         }
 
-	   	return view('wahlfach', compact('optionen', 'schwerpunkt', 'lernfelder', 'matrix', 'wahl', 'summe1', 'summe2', 'stufe')); 
+	   	return view('wahlfach', compact('optionen', 'schwerpunkt', 'lernfelder', 'matrix', 'summe1', 'summe2', 'stufe')); 
     }
 
     public function verarbeiteWahlfach(Request $request)

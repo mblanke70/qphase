@@ -12,7 +12,7 @@ use InvalidArgumentException;
 use Laravel\Socialite\SocialiteManager;
 use Laravel\Socialite\SocialiteServiceProvider;
 
-use App\Sportkurs;
+//use App\Sportkurs;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        /*
         Validator::extend('sum', function ($attribute, $value, $parameters) {
             $sum = 0;
             foreach($value as $id)
@@ -34,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
             return $sum == 2;
         });
+        */
     }
 
     /**

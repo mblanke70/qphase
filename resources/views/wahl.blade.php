@@ -67,7 +67,7 @@
 
     <h4 class="mt-3">{{ $stufe->name }}</h4>
 
-    @if(isset($warnung))
+    @if(!empty($warnung))
 
         <div class="alert alert-danger pb-0">
             <ul>
