@@ -17,8 +17,7 @@
     @endif
     
     <form class="mt-4" action="{{ url('schwerpunkt') }}" method="POST" role="form">
-
-        {{ csrf_field() }}
+        @csrf
 
         @foreach ($schwerpunkte as $sp)
 
