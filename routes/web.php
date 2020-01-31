@@ -36,13 +36,13 @@ Route::get ('sportwahlen/wahlbogen', 'SportwahlenController@zeigeWahlbogen');
 Route::post('sportwahlen/wahlbogen', 'SportwahlenController@speichereWahlbogen');
 */
 
-Route::get ('/', 'KurswahlenController@zeigeSchwerpunkte');
+Route::get ('/', 'KurswahlenController@zeigeSchwerpunkte')->middleware('web');
 
 Route::get('login/iserv', 'Auth\LoginController@redirectToProvider')->name('login');
 Route::get('login/iserv/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get ('schwerpunkt', 'KurswahlenController@zeigeSchwerpunkte');
-Route::post('schwerpunkt', 'KurswahlenController@verarbeiteSchwerpunkte');
+Route::get ('schwerpunkt', 'KurswahlenController@zeigeSchwerpunkte')->middleware('web');
+Route::post('schwerpunkt', 'KurswahlenController@verarbeiteSchwerpunkte')->middleware('web');
     
 Route::get ('p1', 'KurswahlenController@zeigeP1');
 Route::post('p1', 'KurswahlenController@verarbeiteP1');
